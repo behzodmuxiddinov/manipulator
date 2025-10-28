@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { getLocalStorage, optimizeCommands, setLocalStorage } from "@/utils";
 import { HistoryTable } from "./historyTable";
 import { THistory } from "@/types";
+import { Directions } from "./directions";
 
 export const AnimationField = () => {
     const COLS = 10;
@@ -43,10 +44,10 @@ export const AnimationField = () => {
             case "П":
             if (col < COLS - 1) newPosition = currentPositionRef.current + 1
             break
-            case "В":
+            case "Н":
             if (row < ROWS - 1) newPosition = currentPositionRef.current + COLS
             break
-            case "Н":
+            case "В":
             if (row > 0) newPosition = currentPositionRef.current - COLS
             break
         }
@@ -139,6 +140,8 @@ export const AnimationField = () => {
                 Перезагрузить
             </Button>
         </div>
+
+        <Directions/>
 
         <div
             className="grid gap-1 bg-white p-2 rounded-lg"
